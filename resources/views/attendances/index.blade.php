@@ -15,7 +15,7 @@
                 @if($date->dayOfWeek == 0)
                     <tr>
                         @endif
-                        <td @if($date->month != 3) class="bg-secondary" @endif>{{ $date->day }}</td>
+                        <td @if($date->month != 3) class="" @endif>{{ $date->day }}</td>
                         @if($date->dayOfWeek == 6)
                     </tr>
                 @endif
