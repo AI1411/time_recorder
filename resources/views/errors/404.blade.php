@@ -1,3 +1,5 @@
-<?php
+@extends('layouts.app')
 
-phpinfo();
+@section('content')
+ 404 not found
+@endsection

@@ -10,4 +10,9 @@ class Region extends Model
     {
         return $this->hasMany(Pref::class);
     }
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

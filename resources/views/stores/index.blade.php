@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+{{--    <div class="container">--}}
         {{--        <div class="row justify-content-center">--}}
 
         <div class="clo-md-8">
@@ -21,6 +21,7 @@
                         <th scope="col">名前</th>
                         <th scope="col">年齢</th>
                         <th scope="col">メールアドレス</th>
+                        <th scope="col">所属</th>
                         <th scope="col">権限</th>
                         <th scope="col">都道府県</th>
                         <th scope="col">地域</th>
@@ -34,6 +35,7 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->age }}</td>
                             <td>{{ $user->email }}</td>
+                            <td>{{ $user->store->name }}</td>
                             <td>{{ $user->role->name }}</td>
                             <td>{{ $user->pref->name }}</td>
                             <td>{{ $user->region->name }}</td>
@@ -57,6 +59,6 @@
             </div>
         </div>
 
-    </div>
+{{--    </div>--}}
     {{--    </div>--}}
 @endsection

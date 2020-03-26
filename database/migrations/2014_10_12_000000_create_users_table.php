@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('pref_id')->nullable();
             $table->unsignedBigInteger('region_id')->nullable();
             $table->unsignedBigInteger('role_id')->nullable();
+            $table->unsignedBigInteger('store_id')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
 //            $table->timestamp('start_date');

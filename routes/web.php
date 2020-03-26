@@ -15,5 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'UsersController@index')->name('users.index');
+Route::get('/', function () {
+    return view('home');
+});
+Route::get('/users', 'UsersController@index')->name('users.index');
 Route::get('/users/{id}', 'UsersController@show')->name('users,show');
+Route::get('/stores/{id}', 'StoreController@show')->name('stores.show');

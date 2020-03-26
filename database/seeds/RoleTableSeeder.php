@@ -14,13 +14,16 @@ class RoleTableSeeder extends Seeder
         DB::table('roles')->delete();
         DB::table('roles')->insert([
             0 => [
-                'name' => 'admin'
+                'name' => '管理者'
             ],
             1 => [
-                'name' => 'default'
+                'name' => '社員'
             ],
             2 => [
-                'name' => 'premium'
+                'name' => 'パート・アルバイト'
+            ],
+            3 => [
+                'name' => '契約社員'
             ]
         ]);
     }
