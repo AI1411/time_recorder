@@ -7,10 +7,24 @@ use Illuminate\Http\Request;
 
 class AttendanceController extends Controller
 {
-    public function getCalenderDate($year = 2020, $month = 4)
+    public function index(Request $request)
     {
-//        $dateStr = sprintf('%04d-%02d-01', $year, $month);
-        $date = new Carbon("{$year}-{$month}-01");
+        $year = 2020;
+        $month = 03;
+        $months = [1,2,3,4,5,6,7,8,9,10,11, 12];
+        $search_year = $request->input('search_year');
+        $search_month = $request->input('search_month');
+
+        if (!empty($search_year)) {
+            $year = $search_year;
+        }
+        if (!empty($search_month)) {
+            $month = $search_month;
+        }
+
+        $date = new Carbon("{$year}-{$month}");
+        dump($date);
+
 
         $addDay = ($date->copy()->endOfMonth()->isSunday() ? 7 : 0);
 
@@ -22,6 +36,6 @@ class AttendanceController extends Controller
         for ($i = 0; $i < $count; $i++, $date->addDays()) {
             $dates[] = $date->copy();
         }
-        return view('attendances.index', compact('dates'));
+        return view('attendances.index', compact('dates', 'month', 'year', 'months'));
     }
 }

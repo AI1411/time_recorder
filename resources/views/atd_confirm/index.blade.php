@@ -6,10 +6,10 @@
 
 @section('content')
     <div class="container">
-        <div class="card-header">勤怠申請</div>
+        <div class="card-header mb-3">勤怠確認</div>
         <div class="d-flex p-2">
             <form action="" class="" method="get" onchange="submit(this.form)">
-                <select name="search_year" id="" class="">
+                <select name="search_month" id="" class="">
                     @foreach([2019,2020,2021] as $year)
                         <option value="{{ $year }}">
                             {{ $year }}年
@@ -41,9 +41,7 @@
                     <tr>
                         @endif
                         <td @if($date->month != 3) class="" @endif>
-                            {{--                            <a href="#">--}}
                             {{ $date->day }}
-                            {{--                            </a>--}}
                         </td>
                         @if($date->dayOfWeek == 6)
                     </tr>
