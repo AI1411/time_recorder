@@ -5,8 +5,10 @@
         {{--        <div class="row justify-content-center">--}}
 
         <div class="clo-md-8">
+            <div class="card-header">従業員管理</div>
             <div class="card-body">
-                <form action="" class="mb-4" method="get" onchange="submit(this.form)">
+                <form action="" class="p-2" method="get" onchange="submit(this.form)">
+                    <label for="" class="mr-2">店舗検索</label>
                     <select name="search_store" id="" class="">
                         @foreach($stores as $store)
                             <option value="{{ $store->id }}">
@@ -22,9 +24,9 @@
                         <th scope="col">年齢</th>
                         <th scope="col">メールアドレス</th>
                         <th scope="col">権限</th>
+                        <th scope="col">給料</th>
                         <th scope="col">所属店舗</th>
                         <th scope="col">都道府県</th>
-                        <th scope="col">地域</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -36,9 +38,9 @@
                             <td>{{ $user->age }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->role->name }}</td>
+                            <td>{{ !empty($user->salaries[0]->salary) ? $user->salaries[0]->salary : '未設定' }}</td>
                             <td>{{ $user->store->name }}</td>
                             <td>{{ $user->pref->name }}</td>
-                            <td>{{ $user->region->name }}</td>
                             <td>
                                 <a href="">
                                     <button class="btn btn-primary btn-sm">詳細</button>

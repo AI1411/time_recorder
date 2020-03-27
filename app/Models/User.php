@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Request;
@@ -63,12 +64,17 @@ class User extends Authenticatable
         return $this->hasMany(Salary::class);
     }
 
-    public function scopeSearchStore($query)
+    public function scopeSearchStore(Builder $builder)
     {
         $search_store = Request::input('search_store');
         if ($search_store) {
-            return $query->where('store_id', $search_store);
+            return $builder->where('store_id', $search_store);
         }
-        return $query;
+        return $builder;
+    }
+
+    public function employment_status()
+    {
+        return $this->belongsTo(EmploymentStatus::class);
     }
 }
