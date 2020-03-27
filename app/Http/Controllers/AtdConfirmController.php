@@ -7,12 +7,24 @@ use Illuminate\Http\Request;
 
 class AtdConfirmController extends Controller
 {
-    public function index($year = 2020, $month = 3)
+    public function index(Request $request)
     {
+        $year = 2020;
+        $month = 03;
+        $months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+        $search_year = $request->input('search_year');
+        $search_month = $request->input('search_month');
+
+        if (!empty($search_year)) {
+            $year = $search_year;
+        }
+        if (!empty($search_month)) {
+            $month = $search_month;
+        }
+
         $date = new Carbon("{$year}-{$month}-01");
 
         $addDay = ($date->copy()->endOfMonth()->isSunday() ? 7 : 0);
-        $months = [1,2,3,4,5,6,7,8,9,10,11, 12];
 
         $date->subDay($date->dayOfWeek);
         $count = 31 + $addDay + $date->dayOfWeek;
@@ -22,6 +34,6 @@ class AtdConfirmController extends Controller
         for ($i = 0; $i < $count; $i++, $date->addDays()) {
             $dates[] = $date->copy();
         }
-        return view('atd_confirm.index', compact('dates', 'months'));
+        return view('atd_confirm.index', compact('dates', 'months', 'month', 'year'));
     }
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Request;
 
 class User extends Authenticatable
 {
@@ -55,5 +56,19 @@ class User extends Authenticatable
     public function store()
     {
         return $this->belongsTo(Store::class);
+    }
+
+    public function salaries()
+    {
+        return $this->hasMany(Salary::class);
+    }
+
+    public function scopeSearchStore($query)
+    {
+        $search_store = Request::input('search_store');
+        if ($search_store) {
+            return $query->where('store_id', $search_store);
+        }
+        return $query;
     }
 }

@@ -11,7 +11,7 @@ class AttendanceController extends Controller
     {
         $year = 2020;
         $month = 03;
-        $months = [1,2,3,4,5,6,7,8,9,10,11, 12];
+        $months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         $search_year = $request->input('search_year');
         $search_month = $request->input('search_month');
 
@@ -22,9 +22,7 @@ class AttendanceController extends Controller
             $month = $search_month;
         }
 
-        $date = new Carbon("{$year}-{$month}");
-        dump($date);
-
+        $date = new Carbon("{$year}-{$month}-01");
 
         $addDay = ($date->copy()->endOfMonth()->isSunday() ? 7 : 0);
 
