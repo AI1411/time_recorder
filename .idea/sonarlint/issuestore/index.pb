@@ -87,8 +87,6 @@ N
 resources/views/home.blade.php,a/2/a2a516abb04bf3dd73ba4b569b16cc453e3ac2bb
 C
 resources/js/app.js,8/5/857628e89e6d3e0f341720284d70b5f44c757924
-J
-resources/views/index.html,3/1/31331e3c0206cb62618e78a85741f355e7961b2f
 V
 &resources/views/stores/index.blade.php,b/6/b65a2619fbf974c7772ac7337ee6538b26015b6c
 B
@@ -135,5 +133,5 @@ O
 app/Models/EmploymentStatus.php,e/1/e1db9451e8ecc52669fd65dca89b7c630a9aa5aa
 r
 Bdatabase/migrations/2020_03_26_121426_create_attendances_table.php,8/a/8aa299b80477e74c80ebe28ef3be0febdb9533e4
-9
-	train.php,4/3/4323a56572d5066091bac870f349b653affc951d
+Y
+)resources/views/layouts/message.blade.php,4/9/4939d59968e40b0df071fb3a334a0aa27e3d5b16

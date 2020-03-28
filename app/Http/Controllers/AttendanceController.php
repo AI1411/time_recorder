@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendance;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -39,6 +40,12 @@ class AttendanceController extends Controller
 
     public function store(Request $request)
     {
-        dd($request);
+        $attendance = new Attendance();
+        $attendance->user_id = $request->user_id;
+        $attendance->start_time = $request->start_time;
+        $attendance->end_time = $request->end_time;
+        $attendance->save();
+
+        return redirect()->back()->with('success', '勤怠を登録しました');
     }
 }

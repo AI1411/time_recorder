@@ -6,6 +6,7 @@
 
 @section('content')
     <div class="container">
+        @include('layouts.message')
         <div class="card-header">勤怠申請</div>
         <div class="d-flex p-2">
             <form action="" class="" method="get" onchange="submit(this.form)">
@@ -42,9 +43,9 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="" method="post">
+                            <form action="{{ route('attendances.store') }}" method="post">
                                 @csrf
-                                <input type="hidden" value="{{ auth()->user()->id }}">
+                                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                 <label for="">開始時間</label>
                                 <input type="text" name="start_time">
                                 <label for="">終了時間</label>
