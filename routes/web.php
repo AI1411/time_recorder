@@ -20,6 +20,8 @@ Route::get('/', function () {
 });
 Route::get('/users', 'UsersController@index')->name('users.index');
 Route::get('/users/{id}', 'UsersController@show')->name('users,show');
+Route::get('/userExport', 'UsersController@export')->name('users.export');
+
 Route::get('/stores/{id}', 'StoreController@show')->name('stores.show');
 
 
