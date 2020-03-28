@@ -21,5 +21,10 @@ Route::get('/', function () {
 Route::get('/users', 'UsersController@index')->name('users.index');
 Route::get('/users/{id}', 'UsersController@show')->name('users,show');
 Route::get('/stores/{id}', 'StoreController@show')->name('stores.show');
+
+
 Route::get('/attendances', 'AttendanceController@index')->name('attendances.index');
+Route::post('/attendances', 'AttendanceController@store')->name('attendances.store');
+
+
 Route::get('/atd_confirm', 'AtdConfirmController@index')->name('atd_confirm.index');

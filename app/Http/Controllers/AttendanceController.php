@@ -36,4 +36,9 @@ class AttendanceController extends Controller
         }
         return view('attendances.index', compact('dates', 'month', 'year', 'months'));
     }
+
+    public function store(Request $request)
+    {
+        dd($request);
+    }
 }

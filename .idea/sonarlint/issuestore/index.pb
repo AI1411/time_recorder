@@ -115,3 +115,25 @@ I
 +resources/views/attendances/index.blade.php,c/c/cc1ddd933838408df681fe29a281e0175c51936a
 [
 +resources/views/atd_confirm/index.blade.php,4/d/4d0169788f4ed7e9a29459326730a0db74293fb2
+H
+storage/logs/laravel.log,5/9/594b7055003ba7ec361dc917d3fd69234d89a509
+z
+Jdatabase/migrations/2020_03_27_143856_create_employment_statuses_table.php,f/a/faacef89dd770f856a959cd3c1279fefe79a5f3d
+o
+?database/migrations/2020_03_27_102519_create_salaries_table.php,7/3/732037a36918830a135d50d0dd633931965976c2
+E
+app/Models/Salary.php,e/c/ecee70518a3462adc22ff3532d0666de773d9f73
+T
+$database/factories/SalaryFactory.php,8/1/818037f7d465d423377cc6eb212fbde754a3f681
+T
+$database/seeds/SalaryTableSeeder.php,1/c/1c53a592c8a34cfdf0d339c5e60ffc1460361ddb
+I
+resources/js/bootstrap.js,2/a/2a602b14e912f494b7df1e17ce8d98958460f936
+^
+.database/seeds/EmploymentStatusTableSeeder.php,b/9/b9ae9de568b842d90cc559707ba9db7b4dea7b69
+O
+app/Models/EmploymentStatus.php,e/1/e1db9451e8ecc52669fd65dca89b7c630a9aa5aa
+r
+Bdatabase/migrations/2020_03_26_121426_create_attendances_table.php,8/a/8aa299b80477e74c80ebe28ef3be0febdb9533e4
+9
+	train.php,4/3/4323a56572d5066091bac870f349b653affc951d
