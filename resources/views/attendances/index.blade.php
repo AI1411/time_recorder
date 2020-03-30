@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/calender.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/hover.css') }}">
 @endsection
 
 @section('content')
@@ -130,7 +131,12 @@
                             {{ $date->day }}
                             @foreach($attendances as $attendance)
                                 @if($attendance->start_month == $date->month && $attendance->start_day == $date->day)
-                                    <span style="color: red">○</span>
+                                    <div class="tooltip1">
+                                        <p style="color: #1b4b72">○</p>
+                                        <div class="description1">
+                                            {{ $attendance->start_hour }} ~ {{ $attendance->end_hour }}
+                                        </div>
+                                    </div>
                                 @endif
                             @endforeach
                         </td>

@@ -49,11 +49,13 @@ class AttendanceController extends Controller
         $attendance->start_year = substr($request->start_time, 0, 4);
         $attendance->start_month = substr($request->start_time, 5, 2);
         $attendance->start_day = substr($request->start_time, 8, 2);
+        $attendance->start_hour = explode(' ', $request->start_time)[1];
 
         $attendance->end_time = $request->end_time;
         $attendance->end_year = substr($request->end_time, 0, 4);
         $attendance->end_month = substr($request->end_time, 5, 2);
         $attendance->end_day = substr($request->end_time, 8, 2);
+        $attendance->end_hour = explode(' ', $request->end_time)[1];
 
         $attendances = Auth::user()->attendances;
         foreach ($attendances as $attendance) {
@@ -61,7 +63,6 @@ class AttendanceController extends Controller
                 return redirect()->back()->with('error', 'すでに登録されています');
             }
         }
-
 
         $attendance->save();
 
