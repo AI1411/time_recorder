@@ -14,12 +14,12 @@ class UsersExport implements FromCollection, WithHeadings, WithTitle
     */
     public function collection()
     {
-        return User::all();
+        return User::searchStore()->get();
     }
 
     public function title():string
     {
-        return 'test';
+        return '従業員一覧';
     }
 
     public function headings():array

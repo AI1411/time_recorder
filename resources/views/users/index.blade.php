@@ -2,21 +2,29 @@
 
 @section('content')
     <div class="container">
-        {{--        <div class="row justify-content-center">--}}
-
         <div class="clo-md-8">
             <div class="card-header">従業員管理</div>
             <div class="card-body">
-                <form action="" class="p-2" method="get" onchange="submit(this.form)">
-                    <label for="" class="mr-2">店舗検索</label>
-                    <select name="search_store" id="" class="">
-                        @foreach($stores as $store)
-                            <option value="{{ $store->id }}">
-                                {{ $store->name }}
-                            </option>
-                        @endforeach
-                    </select>
-                </form>
+                <div class="d-flex">
+                    <div>
+                        <form action="" class="p-2" method="get" onchange="submit(this.form)">
+                            <label for="" class="mr-2">店舗検索</label>
+                            <select name="search_store" id="" class="">
+                                @foreach($stores as $store)
+                                    <option value="{{ $store->id }}">
+                                        {{ $store->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </form>
+                    </div>
+                    <div class="ml-auto">
+                        <a href="{{ route('users.export') }}" class="btn btn-outline-secondary">
+                            CSVダウンロード
+                        </a>
+                    </div>
+                </div>
+
                 <table class="table">
                     <thead>
                     <tr>
@@ -60,7 +68,7 @@
                 </table>
             </div>
         </div>
-
+        {{ $users }}
     </div>
     {{--    </div>--}}
 @endsection

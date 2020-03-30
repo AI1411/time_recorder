@@ -13,8 +13,8 @@
         <div class="d-flex p-2">
             <form action="" class="" method="get" onchange="submit(this.form)">
                 <select name="search_year" id="" class="">
-                    @foreach([2019,2020,2021] as $year)
-                        <option value="{{ $year }}">
+                    @foreach([2019,2020,2021] as $key => $year)
+                        <option value="{{ $key }}" @if(request()->search_year == $key) selected @endif>
                             {{ $year }}年
                         </option>
                     @endforeach
@@ -23,8 +23,8 @@
             <form action="" class="ml-2" method="get" onchange="submit(this.form)">
                 <select name="search_month" id="" class="">
                     @foreach($months as $key => $month)
-                        <option value="{{ $key }}" @if(old('search_month') == $key) selected @endif>
-                            {{ $month }}月
+                        <option value="{{ $key }}" @if(request()->search_month == $key) selected @endif>
+                            {{ $month }}
                         </option>
                     @endforeach
                 </select>

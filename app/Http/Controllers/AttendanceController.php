@@ -6,14 +6,15 @@ use App\Http\Requests\AttendanceRequest;
 use App\Models\Attendance;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AttendanceController extends Controller
 {
     public function index(Request $request)
     {
-        $year = 2020;
-        $month = 03;
-        $months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+        $year = explode('-', Carbon::now())[0];
+        $month = explode('-', Carbon::now())[1];
+        $months = ['選んでください', '1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
         $search_year = $request->input('search_year');
         $search_month = $request->input('search_month');
 
@@ -54,9 +55,13 @@ class AttendanceController extends Controller
         $attendance->end_month = substr($request->end_time, 5, 2);
         $attendance->end_day = substr($request->end_time, 8, 2);
 
-        if ($attendance->user_id == auth()->user()->id && $attendance->start_day == substr($request->start_time, 8, 2)) {
-            return redirect()->back()->with('error', 'すでに登録されています');
+        $attendances = Auth::user()->attendances;
+        foreach ($attendances as $attendance) {
+            if (substr($request->start_time, 8, 2) == $attendance->start_day) {
+                return redirect()->back()->with('error', 'すでに登録されています');
+            }
         }
+
 
         $attendance->save();
 
