@@ -30,3 +30,5 @@ Route::post('/attendances', 'AttendanceController@store')->name('attendances.sto
 
 
 Route::get('/atd_confirm', 'AtdConfirmController@index')->name('atd_confirm.index');
+
+Route::resource('expenses', 'ExpenseController')->only(['index', 'store']);
