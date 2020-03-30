@@ -7,7 +7,9 @@
 @section('content')
     <div class="container">
         @include('layouts.message')
-        <div class="card-header">勤怠申請</div>
+        <div class="card-header">
+            勤怠申請
+        </div>
         <div class="d-flex p-2">
             <form action="" class="" method="get" onchange="submit(this.form)">
                 <select name="search_year" id="" class="">
@@ -21,7 +23,7 @@
             <form action="" class="ml-2" method="get" onchange="submit(this.form)">
                 <select name="search_month" id="" class="">
                     @foreach($months as $key => $month)
-                        <option value="{{ $key }}" @if(old('search_month') == $key) selected @endif}}>
+                        <option value="{{ $key }}" @if(old('search_month') == $key) selected @endif>
                             {{ $month }}月
                         </option>
                     @endforeach
@@ -33,7 +35,8 @@
                 </button>
             </div>
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -76,9 +79,12 @@
                     <tr>
                         @endif
                         <td @if($date->month != 3) class="" @endif>
-                            {{--                            <a href="#">--}}
                             {{ $date->day }}
-                            {{--                            </a>--}}
+                            @foreach($attendances as $attendance)
+                                @if($attendance->start_month == $date->month && $attendance->start_day == $date->day)
+                                    <span style="color: red">○</span>
+                                @endif
+                            @endforeach
                         </td>
                         @if($date->dayOfWeek == 6)
                     </tr>

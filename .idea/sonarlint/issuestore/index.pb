@@ -135,3 +135,8 @@ r
 Bdatabase/migrations/2020_03_26_121426_create_attendances_table.php,8/a/8aa299b80477e74c80ebe28ef3be0febdb9533e4
 Y
 )resources/views/layouts/message.blade.php,4/9/4939d59968e40b0df071fb3a334a0aa27e3d5b16
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+K
+app/Exports/UsersExport.php,b/4/b4f18054aded531c6026db9d5cd14e69378e5992
