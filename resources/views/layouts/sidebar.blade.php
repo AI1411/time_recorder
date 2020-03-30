@@ -11,5 +11,14 @@
         <a href="{{ route('atd_confirm.index') }}" class="list-group-item list-group-item-action bg-light">勤怠確認</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">経費申請</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">経費申請</a>
+        <a class="list-group-item list-group-item-action bg-light" href="{{ route('logout') }}"
+           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+            ログアウト
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+              style="display: none;">
+            @csrf
+        </form>
     </div>
 </div>

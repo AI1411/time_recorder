@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Attendance;
 use Illuminate\Foundation\Http\FormRequest;
 
-class AttendaceRequest extends FormRequest
+class AttendanceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +27,8 @@ class AttendaceRequest extends FormRequest
         return [
             'user_id' => 'required',
             'start_time' => 'required',
-            'end_time' => 'required|after:start_time'
+            'end_time' => 'required|after:start_time',
+            'attendance.*.start_day' => 'distinct'
         ];
     }
 

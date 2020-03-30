@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AttendaceRequest;
+use App\Http\Requests\AttendanceRequest;
 use App\Models\Attendance;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -26,7 +26,7 @@ class AttendanceController extends Controller
 
         $date = new Carbon("{$year}-{$month}-01");
 
-        $attendances = Attendance::all();
+        $attendances = Attendance::where('user_id', auth()->user()->id)->get();
         $addDay = ($date->copy()->endOfMonth()->isSunday() ? 7 : 0);
 
         $date->subDay($date->dayOfWeek);
@@ -40,7 +40,7 @@ class AttendanceController extends Controller
         return view('attendances.index', compact('dates', 'month', 'year', 'months', 'attendances'));
     }
 
-    public function store(AttendaceRequest $request)
+    public function store(AttendanceRequest $request)
     {
         $attendance = new Attendance();
         $attendance->user_id = $request->user_id;
@@ -53,6 +53,11 @@ class AttendanceController extends Controller
         $attendance->end_year = substr($request->end_time, 0, 4);
         $attendance->end_month = substr($request->end_time, 5, 2);
         $attendance->end_day = substr($request->end_time, 8, 2);
+
+        if ($attendance->user_id == auth()->user()->id && $attendance->start_day == substr($request->start_time, 8, 2)) {
+            return redirect()->back()->with('error', 'すでに登録されています');
+        }
+
         $attendance->save();
 
         return redirect()->back()->with('success', '勤怠を登録しました');
