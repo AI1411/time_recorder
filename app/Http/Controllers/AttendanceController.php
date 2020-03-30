@@ -46,13 +46,13 @@ class AttendanceController extends Controller
         $attendance->user_id = $request->user_id;
         $attendance->start_time = $request->start_time;
         $attendance->start_year = substr($request->start_time, 0, 4);
-        $attendance->start_month = substr($request->start_time, 4, 2);
-        $attendance->start_day = substr($request->start_time, 6, 2);
+        $attendance->start_month = substr($request->start_time, 5, 2);
+        $attendance->start_day = substr($request->start_time, 8, 2);
 
         $attendance->end_time = $request->end_time;
         $attendance->end_year = substr($request->end_time, 0, 4);
-        $attendance->end_month = substr($request->end_time, 4, 2);
-        $attendance->end_day = substr($request->end_time, 6, 2);
+        $attendance->end_month = substr($request->end_time, 5, 2);
+        $attendance->end_day = substr($request->end_time, 8, 2);
         $attendance->save();
 
         return redirect()->back()->with('success', '勤怠を登録しました');
