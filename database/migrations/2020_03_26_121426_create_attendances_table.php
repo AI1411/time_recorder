@@ -20,13 +20,15 @@ class CreateAttendancesTable extends Migration
             $table->unsignedBigInteger('start_year');
             $table->unsignedBigInteger('start_month');
             $table->unsignedBigInteger('start_day');
-            $table->string('start_hour');
+            $table->unsignedBigInteger('start_hour');
+            $table->unsignedBigInteger('start_minute');
 
             $table->dateTime('end_time');
             $table->unsignedBigInteger('end_year');
             $table->unsignedBigInteger('end_month');
             $table->unsignedBigInteger('end_day');
-            $table->string('end_hour');
+            $table->unsignedBigInteger('end_hour');
+            $table->unsignedBigInteger('end_minute');
             $table->timestamps();
         });
     }

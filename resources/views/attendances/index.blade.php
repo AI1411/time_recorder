@@ -134,7 +134,7 @@
                                     <div class="tooltip1">
                                         <p style="color: #1b4b72">○</p>
                                         <div class="description1">
-                                            {{ $attendance->start_hour }} ~ {{ $attendance->end_hour }}
+                                            {{ $attendance->start_hour . ':' . $attendance->start_minute }} ~ {{ $attendance->end_hour . ':' . $attendance->end_minute }}
                                         </div>
                                     </div>
                                 @endif
