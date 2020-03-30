@@ -9,7 +9,7 @@
         <a href="#" class="list-group-item list-group-item-action bg-light">シフト確認</a>
         <a href="{{ route('attendances.index') }}" class="list-group-item list-group-item-action bg-light">勤怠申請</a>
         <a href="{{ route('atd_confirm.index') }}" class="list-group-item list-group-item-action bg-light">勤怠確認</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">経費申請</a>
+        <a href="{{ route('expenses.index') }}" class="list-group-item list-group-item-action bg-light">経費申請</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">経費申請</a>
         <a class="list-group-item list-group-item-action bg-light" href="{{ route('logout') }}"
            onclick="event.preventDefault();

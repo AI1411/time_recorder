@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/calender.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/hover.css') }}">
 @endsection
 
 @section('content')
@@ -112,11 +113,17 @@
                         @endif
                         <td @if($date->month != 3) class="" @endif>
                             {{ $date->day }}
-                            {{--                            @foreach($attendances as $attendance)--}}
-                            {{--                                @if($attendance->start_month == $date->month && $attendance->start_day == $date->day)--}}
-                            {{--                                    <span style="color: red">○</span>--}}
-                            {{--                                @endif--}}
-                            {{--                            @endforeach--}}
+
+                            @foreach($total_expense as $expense)
+                                @if($expense->day == $date->day)
+                                    <div class="tooltip1">
+                                        <p style="color: #1b4b72">○</p>
+                                        <div class="description1">
+                                            {{ $expense->transportation_expense }}円
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
                         </td>
                         @if($date->dayOfWeek == 6)
                     </tr>

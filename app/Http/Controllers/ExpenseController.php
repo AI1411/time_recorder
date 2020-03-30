@@ -49,6 +49,7 @@ class ExpenseController extends Controller
             'month',
             'year',
             'months',
+            'total_expense',
             'total_expense_result'
         ));
     }
