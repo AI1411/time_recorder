@@ -7,6 +7,7 @@ use App\Models\Attendance;
 use App\Models\Expense;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ExpenseController extends Controller
 {
@@ -39,13 +40,17 @@ class ExpenseController extends Controller
         }
 
         $total_expense_result = 0;
-        $total_expense = Expense::select('transportation_expense')->where('user_id', auth()->user()->id)->get();
+        $total_expense = Expense::where('user_id', Auth::user()->id)->targetMonth()->get();
         foreach ($total_expense as $expense) {
-//            dd($expense->transportation_expense);
-//            dd($expense);
             $total_expense_result += $expense->transportation_expense;
         }
-        return view('expenses.index', compact('dates', 'month', 'year', 'months', 'total_expense_result'));
+        return view('expenses.index', compact(
+            'dates',
+            'month',
+            'year',
+            'months',
+            'total_expense_result'
+        ));
     }
 
     public function store(ExpenseRequest $request)
@@ -53,6 +58,8 @@ class ExpenseController extends Controller
         $expense = new Expense();
         $expense->user_id = $request->user_id;
         $expense->date = $request->date;
+        $expense->month = substr($request->date, 5, 2);
+        $expense->day = substr($request->date, 8, 2);
         $expense->transportation_expense = $request->transportation_expense;
 
         $expense->save();

@@ -18,6 +18,8 @@ class CreateExpensesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->bigInteger('transportation_expense')->comment('交通費');
             $table->dateTime('date')->comment('使用した日');
+            $table->unsignedBigInteger('month');
+            $table->unsignedBigInteger('day');
             $table->timestamps();
         });
     }
