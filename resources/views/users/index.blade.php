@@ -50,7 +50,7 @@
                             <td>{{ $user->store->name }}</td>
                             <td>{{ $user->pref->name }}</td>
                             <td>
-                                <a href="">
+                                <a href="{{ route('users.show', $user->id) }}">
                                     <button class="btn btn-primary btn-sm">詳細</button>
                                 </a>
                                 <a href="">

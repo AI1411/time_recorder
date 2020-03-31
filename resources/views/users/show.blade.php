@@ -39,7 +39,7 @@
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="salary">給与</label>
-                        <input type="text" class="form-control" id="salary" value="{{ $user_salary[0]->salary }}" placeholder="給与" readonly>
+                        <input type="text" class="form-control" id="salary" value="{{ !empty($user_salary[0]->salary) ? $user_salary[0]->salary : '未設定' }}" placeholder="給与" readonly>
                     </div>
                 </div>
                 <div class="row">

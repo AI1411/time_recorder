@@ -20,10 +20,15 @@ class UsersController extends Controller
 
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::find($id);
         $user_salary = $user->salaries()->orderBy('salary', 'desc')->take(1)->get();
 
         return view('users.show', compact('user', 'user_salary'));
+    }
+
+    public function edit()
+    {
+        return view('users.edit');
     }
 
     public function export()
