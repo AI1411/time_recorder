@@ -145,6 +145,16 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'last_name' => '姓',
+        'first_name' => '名前',
+        'age' => '年齢',
+        'pref_id' => '都道府県',
+        'store_id' => '店舗',
+        'role_id' => '権限',
+        'employment_status_id' => '雇用形態',
+        'email' => 'メールアドレス',
+        'password' => 'パスワード'
+    ],
 
 ];

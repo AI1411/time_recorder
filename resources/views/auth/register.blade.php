@@ -12,71 +12,110 @@
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="lastName">性</label>
-                                    <input type="text" name="last_name" class="form-control" id=""
-                                           placeholder="姓" value=""
-                                           required="">
+                                    <input type="text" name="last_name"
+                                           class="form-control @error('last_name') is-invalid @enderror"
+                                           placeholder="姓">
+                                    @error('last_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="firstName">名前</label>
-                                    <input type="text" name="first_name" class="form-control" id=""
+                                    <input type="text" name="first_name"
+                                           class="form-control @error('last_name') is-invalid @enderror"
                                            placeholder="名" value=""
                                            required="">
+                                    @error('first_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="text">年齢</label>
-                                    <input type="text" name="age" class="form-control" id="age" placeholder="age"
-                                           value=""
-                                    >
+                                    <input type="text" name="age" class="form-control @error('age') is-invalid @enderror" placeholder="age">
+                                    @error('age')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 mb-3">
                                     <label for="email">メールアドレス</label>
-                                    <input type="email" name="email" class="form-control" id="email"
+                                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email"
                                            placeholder="you@example.com"
                                            value="{{ old('email') }}">
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="pref">都道府県</label>
-                                    <select name="pref_id" id="pref_id" class="form-control">
+                                    <select name="pref_id" id="pref_id" class="form-control @error('pref_id') is-invalid @enderror">
                                         @foreach($prefs as $pref)
                                             <option value="{{ $pref->id }}">
                                                 {{ $pref->name }}
                                             </option>
                                         @endforeach
                                     </select>
+                                    @error('pref_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="role">権限</label>
-                                    <select name="role_id" id="role_id" class="form-control">
+                                    <select name="role_id" id="role_id" class="form-control @error('role_id') is-invalid @enderror">
                                         @foreach($roles as $role)
                                             <option value="{{ $role->id }}">
                                                 {{ $role->name }}
                                             </option>
                                         @endforeach
                                     </select>
+                                    @error('role_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="store_id">所属店舗</label>
-                                    <select name="store_id" id="stoe_id" class="form-control">
+                                    <select name="store_id" id="stoe_id" class="form-control @error('store_id') is-invalid @enderror">
                                         @foreach($stores as $store)
                                             <option value="{{ $store->id }}">
                                                 {{ $store->name }}
                                             </option>
                                         @endforeach
                                     </select>
+                                    @error('store_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="role">雇用形態</label>
-                                    <select name="employment_status_id" id="employment_status_id" class="form-control">
+                                    <label for="">雇用形態</label>
+                                    <select name="employment_status_id" id="employment_status_id" class="form-control @error('employment_status_id') is-invalid @enderror">
                                         @foreach($employment_statuses as $employment_status)
                                             <option value="{{ $employment_status->id }}">
                                                 {{ $employment_status->name }}
                                             </option>
                                         @endforeach
                                     </select>
+                                    @error('employment_status_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="row">
@@ -95,6 +134,11 @@
                                     <label for="store_id">パスワード確認</label>
                                     <input id="password-confirm" type="password" class="form-control"
                                            name="password_confirmation" required autocomplete="new-password">
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                             <button class="btn btn-primary btn-lg btn-block" type="submit">登録</button>
