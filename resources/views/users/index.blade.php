@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        @include('layouts.message')
         <div class="clo-md-8">
             <div class="card-header">従業員管理</div>
             <div class="card-body">
@@ -50,15 +51,19 @@
                             <td>{{ $user->store->name }}</td>
                             <td>{{ $user->pref->name }}</td>
                             <td>
-                                <a href="{{ route('users.show', $user->id) }}">
-                                    <button class="btn btn-primary btn-sm">詳細</button>
-                                </a>
-                                <a href="">
-                                    <button class="btn btn-secondary btn-sm">編集</button>
-                                </a>
-                                <a href="">
-                                    <button class="btn btn-danger btn-sm">削除</button>
-                                </a>
+                                <div class="d-flex">
+                                    <form action="{{ route('users.show', $user->id) }}" class="p-1">
+                                        <button class="btn btn-primary btn-sm">詳細</button>
+                                    </form>
+                                    <form action="{{ route('users.edit', $user->id) }}" class="p-1">
+                                        <button class="btn btn-secondary btn-sm">編集</button>
+                                    </form>
+                                    <form action="{{ route('users.destroy', $user->id) }}" class="p-1" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger btn-sm" onclick="return confirm('削除してもよろしいですか?')">削除</button>
+                                    </form>
+                                </div>
                             </td>
                             <td>
                             </td>

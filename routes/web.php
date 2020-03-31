@@ -22,8 +22,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
     //従業員一覧
-    Route::get('/users', 'UsersController@index')->name('users.index');
-    Route::get('/users/{id}', 'UsersController@show')->name('users.show');
+    Route::resource('users', 'UsersController');
     //従業員CSVエクスポート
     Route::get('/userExport', 'UsersController@export')->name('users.export');
     //店舗ページ

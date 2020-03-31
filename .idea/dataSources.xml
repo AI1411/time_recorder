@@ -7,11 +7,5 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/time_recorder</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="training@localhost" uuid="0f58bc04-8246-463b-80e4-95ddeb9f8066">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/training</jdbc-url>
-    </data-source>
   </component>
 </project>
