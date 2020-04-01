@@ -16,7 +16,8 @@ class CreateExpensesTable extends Migration
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->bigInteger('transportation_expense')->comment('交通費');
+            $table->unsignedBigInteger('cost_id');
+            $table->unsignedBigInteger('fee');
             $table->dateTime('date')->comment('使用した日');
             $table->unsignedBigInteger('month');
             $table->unsignedBigInteger('day');

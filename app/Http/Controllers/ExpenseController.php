@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cost;
 use App\Http\Requests\ExpenseRequest;
 use App\Models\Attendance;
 use App\Models\Expense;
@@ -13,6 +14,7 @@ class ExpenseController extends Controller
 {
     public function index(Request $request)
     {
+        //カレンダー作成
         $year = explode('-', Carbon::now())[0];
         $month = explode('-', Carbon::now())[1];
         $months = ['選んでください', '1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
@@ -39,10 +41,13 @@ class ExpenseController extends Controller
             $dates[] = $date->copy();
         }
 
+        //経費の計算処理
         $total_expense_result = 0;
         $total_expense = Expense::where('user_id', Auth::user()->id)->targetMonth()->get();
+        $costs = Cost::all();
+        $expense_array = [];
         foreach ($total_expense as $expense) {
-            $total_expense_result += $expense->transportation_expense;
+            $total_expense_result += $expense->fee;
         }
         return view('expenses.index', compact(
             'dates',
@@ -50,7 +55,9 @@ class ExpenseController extends Controller
             'year',
             'months',
             'total_expense',
-            'total_expense_result'
+            'total_expense_result',
+            'costs',
+            'expense_array'
         ));
     }
 
@@ -61,7 +68,8 @@ class ExpenseController extends Controller
         $expense->date = $request->date;
         $expense->month = substr($request->date, 5, 2);
         $expense->day = substr($request->date, 8, 2);
-        $expense->transportation_expense = $request->transportation_expense;
+        $expense->cost_id = $request->cost_id;
+        $expense->fee = $request->fee;
 
         $expense->save();
 

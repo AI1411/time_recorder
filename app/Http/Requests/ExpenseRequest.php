@@ -26,7 +26,8 @@ class ExpenseRequest extends FormRequest
         return [
             'user_id' => 'required',
             'date' => 'required|date',
-            'transportation_expense' => 'required|integer',
+            'cost_id' => 'required|integer',
+            'fee' => 'required|integer'
         ];
     }
 
@@ -34,7 +35,8 @@ class ExpenseRequest extends FormRequest
     {
         return [
             'date' => '使用日',
-            'transportation_expense' => '交通費',
+            'cost_id' => '経費の種類',
+            'fee' => '金額'
         ];
     }
 }

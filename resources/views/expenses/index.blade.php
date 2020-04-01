@@ -50,7 +50,7 @@
                             <form action="{{ route('expenses.store') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                                <div class="d-flex">
+                                <div class="row justify-content-center">
                                     <div>
                                         <label for="">使用日</label>
                                         <div class="col-sm-12">
@@ -76,24 +76,40 @@
                                             });
                                         </script>
                                     </div>
-                                    <div>
-                                        <label for="">使用金額</label>
-                                        <div class="col-ms-12">
-                                            <div class="form-group">
-                                                <input class="form-control" type="text" name="transportation_expense">
+                                    <div class="d-flex">
+                                        <div class="mr-3">
+                                            <label for="">経費の種類</label>
+                                            <div class="col-ms-12">
+                                                <div class="form-group">
+                                                    <select name="cost_id" class="form-control">
+                                                        @foreach($costs as $cost)
+                                                            <option value="{{ $cost->id }}">
+                                                                {{ $cost->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label for="">使用金額</label>
+                                            <div class="col-ms-12">
+                                                <div class="form-group">
+                                                    <input class="form-control" type="text"
+                                                           name="fee">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                                 {{--                                </div>--}}
                                 <div class="modal-footer">
                                     <button type="submit" class="btn btn-primary">登録</button>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
                                 </div>
                             </form>
-
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -113,13 +129,13 @@
                         @endif
                         <td @if($date->month != 3) class="" @endif>
                             {{ $date->day }}
-
                             @foreach($total_expense as $expense)
                                 @if($expense->day == $date->day)
                                     <div class="tooltip1">
-                                        <p style="color: #1b4b72">○</p>
+                                        <p style="color: #1b4b72">o</p>
                                         <div class="description1">
-                                            {{ $expense->transportation_expense }}円
+                                            {{ $expense->cost->name }}
+                                            {{ $expense->fee }}円
                                         </div>
                                     </div>
                                 @endif

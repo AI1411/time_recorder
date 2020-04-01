@@ -15,6 +15,7 @@ class Attendance extends Model
         return $this->belongsTo(User::class);
     }
 
+    //当月の給与に絞るスコープ
     public function scopeTotalSalaryAtThisMonth(Builder $builder)
     {
         $search_month = Request::input('search_month');
