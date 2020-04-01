@@ -73,13 +73,6 @@ class AttendanceController extends Controller
         $attendance->end_hour = explode(':', explode(' ', $request->end_time)[1])[0];
         $attendance->end_minute = explode(':', explode(' ', $request->end_time)[1])[1];
 
-        $attendances = Auth::user()->attendances;
-        foreach ($attendances as $attendance) {
-            if (substr($request->start_time, 8, 2) == $attendance->start_day) {
-                return redirect()->back()->with('error', 'すでに登録されています');
-            }
-        }
-
         $attendance->save();
 
         return redirect()->back()->with('success', '勤怠を登録しました');
