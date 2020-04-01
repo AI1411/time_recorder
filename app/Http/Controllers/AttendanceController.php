@@ -27,7 +27,7 @@ class AttendanceController extends Controller
 
         $date = new Carbon("{$year}-{$month}-01");
 
-        $attendances = Attendance::where('user_id', auth()->user()->id)->get();
+        $attendances = Attendance::where('user_id', auth()->user()->id)->totalSalaryAtThisMonth()->get();
         $addDay = ($date->copy()->endOfMonth()->isSunday() ? 7 : 0);
 
         $date->subDay($date->dayOfWeek);
@@ -38,7 +38,21 @@ class AttendanceController extends Controller
         for ($i = 0; $i < $count; $i++, $date->addDays()) {
             $dates[] = $date->copy();
         }
-        return view('attendances.index', compact('dates', 'month', 'year', 'months', 'attendances'));
+
+        $user_salary = Auth::user()->salaries[0]->salary;
+
+        $total_working_hour = 0;
+
+        if (!empty($attendances)) {
+            foreach ($attendances as $attendance) {
+                $total_working_hour_by_day = ($attendance->end_hour - $attendance->start_hour);
+                $total_working_hour += $total_working_hour_by_day;
+            }
+        }
+
+        $total_salary = $user_salary * $total_working_hour;
+
+        return view('attendances.index', compact('dates', 'month', 'year', 'months', 'attendances', 'total_salary'));
     }
 
     public function store(AttendanceRequest $request)

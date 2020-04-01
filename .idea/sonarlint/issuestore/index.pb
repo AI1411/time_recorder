@@ -160,3 +160,13 @@ T
 $app/Http/Requests/ExpenseRequest.php,7/c/7cda2db38674a54691a199ecf029c42076cd5929
 X
 (resources/views/expenses/index.blade.php,9/7/9764d636eaad4e824975d24ff757b96a63b10b1c
+S
+#app/Http/Controllers/Controller.php,2/e/2ed23e1749f02eb8e561f0a531d07863e7cf9fb9
+T
+$resources/views/users/edit.blade.php,8/e/8ece776971e3b2f05c17e0bcb278c3066385d29c
+P
+ resources/lang/en/validation.php,4/1/415ab399aa4b8223835e497dabc8646127974fbd
+P
+ resources/lang/ja/validation.php,5/e/5e693eb9e20a24a10b5327400b37540ddc903b1c
+W
+'resources/views/auth/register.blade.php,8/6/8600e63b1d771a3b86abef40d1ef23e1ffb21feb

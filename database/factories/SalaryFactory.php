@@ -11,6 +11,6 @@ $factory->define(Salary::class, function (Faker $faker) {
     $users = User::all();
     return [
         'user_id' => random_int(1, count($users)),
-        'salary' => random_int(100,500) . 0 . 0 . 0,
+        'salary' => random_int(10,20) . 0 . 0,
     ];
 });

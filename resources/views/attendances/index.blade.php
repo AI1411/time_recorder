@@ -148,7 +148,7 @@
         </table>
         <div class="">
             <h2>合計金額</h2>
-            <label for="">10000円</label>
+            <label for="">{{ $total_salary }}</label>
         </div>
     </div>
 @endsection

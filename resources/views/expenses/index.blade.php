@@ -9,7 +9,7 @@
     <div class="container">
         @include('layouts.message')
         <div class="card-header">
-            勤怠申請
+            経費申請
         </div>
         <div class="d-flex p-2">
             <form action="" class="" method="get" onchange="submit(this.form)">
